@@ -82,12 +82,26 @@ function calculateCorrectAnswer() {
     let operand2 = parseInt(document.getElementById('operand2').innerText);
     let operator = document.getElementById("operator").innerText;
 
-    if (operator === "+") {
-        return [operand1 + operand2, "addition"];
-    } else {
-        alert(`Unimplemented operator ${operator}`);
-        throw (`Unimplemented operator ${operator}. Aborting!`);
+    switch (operator) {
+        case '+':
+            return [operand1 + operand2, "addition"];
+        
+        case '-':
+            return [operand1 - operand2, "subtract"];
+
+        case '×':
+            return [operand1 * operand2, "multiply"];
+
+        case '÷':
+            return [operand1 / operand2, "division"];
     }
+
+    // if (operator === "+") {
+    //     return [operand1 + operand2, "addition"];
+    // } else {
+    //     alert(`Unimplemented operator ${operator}`);
+    //     throw (`Unimplemented operator ${operator}. Aborting!`);
+    // }
 }
 
 function displayAdditionQuestion(operand1, operand2) {
@@ -97,7 +111,9 @@ function displayAdditionQuestion(operand1, operand2) {
 }
 
 function displaySubtractQuestion() {
-
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = '-';
 }
 
 function displayMultiplyQuestion() {
